@@ -6,6 +6,7 @@ import UserController from '../controllers/user.controller.js'
 import WelcomeController from '../controllers/welcome.controller.js'
 import FakultasController from '../controllers/fakultas.controller.js'
 import logMiddleware from '../middleware/log.middleware.js'
+import ProdiController from '../controllers/prodi.controller.js'
 
 const router = express.Router()
 
@@ -22,5 +23,7 @@ router.put('/fakultas/:id', FakultasController.update)
 router.patch('/fakultas/:id', FakultasController.update)
 router.delete('/fakultas/:id', FakultasController.delete)
 
+router.get('/prodi',ProdiController.index)
+router.post('/prodi',ProdiController.store)
 
 export default router
