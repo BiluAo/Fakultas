@@ -73,10 +73,26 @@
         {
           "name": "Update Fakultas",
           "request": {
-            "method": "GET",
+            "method": "PATCH",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"FIKR-UPDATE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "{{BASE_URL}}/fakultas/6abd0809f4fdb039efb1fea5",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "fakultas",
+                "6abd0809f4fdb039efb1fea5"
+              ]
             }
           },
           "response": []
@@ -84,10 +100,22 @@
         {
           "name": "Delete Fakultas",
           "request": {
-            "method": "GET",
+            "method": "DELETE",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Sistem Informasi\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "{{BASE_URL}}fakultas",
+              "host": [
+                "{{BASE_URL}}fakultas"
+              ]
             }
           },
           "response": []
@@ -100,21 +128,78 @@
         {
           "name": "Create Prodi",
           "request": {
-            "method": "GET",
+            "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"kode\" : \"SI\",\r\n    \"nama_prodi\": \"Sistem Informasi\",\r\n    \"fakultas_id\": \"6abd0817f4fdb039efb1fea6\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "{{BASE_URL}}/prodi",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "prodi"
+              ]
             }
           },
           "response": []
         },
         {
-          "name": "New Request",
+          "name": "List Prodi",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "{{BASE_URL}}/prodi",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "prodi"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Prodi",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/prodi/xyxyxyx",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "prodi",
+                "xyxyxyx"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Prodi",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/prodi/6ac8cc741a52302a16e93108",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "prodi",
+                "6ac8cc741a52302a16e93108"
+              ]
             }
           },
           "response": []
