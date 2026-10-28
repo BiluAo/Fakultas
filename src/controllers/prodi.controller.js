@@ -3,17 +3,66 @@ import fakultasModel from "../model/fakultas.model.js"
 import { storeProdiSchema, updateProdiSchema } from "../schemas/prodi.schema.js"
 import { apiResponse, apiResponseValidation } from "../utils/response.js"
 import ProdiModel from "../model/prodi.model.js"
+import { promise } from "zod"
 
 class ProdiController {
     static async index(req, res) {
-        const listProdi = await ProdiModel.find().populate("fakultas")
 
+        const { search, sort, sortBy = "createdAt", page = 1, limit = 10 } = req.query
+
+        const currentPage = Math.max(1, parseInt(page, 10) || 1);
+        const perPage = Math.max(1, parseInt(limit, 10) || 10);
+        const skip = (currentPage - 1) * perPage;
+
+        const allowedSortFields = ["kode", "nama_prodi", "createdAt", "updatedAt"];
+        const sortField = allowedSortFields.includes(sortBy) ? sortBy : "createdAt";
+
+        const filter = {}
+
+        const sortOption = {
+            [sortField]: sort === "desc" ? -1 : 1,
+        };
+
+        if (search) {
+            filter.nama_prodi = {
+                $regex: search,
+                $options: "i",
+            };
+        }
+
+        const [listProdi, totalDat] = await Promise.all([
+            ProdiModel.find(filter)
+                .select({
+                    _id: 1,
+                    kode: 1,
+                    nama_prodi: 1,
+                    fakultas: 1,
+                    createdAt: 1,
+                    updatedAt: 1
+                })
+                .sort(sortOption)
+                .skip(skip)
+                .limit(perPage)
+                .populate("Fakultas")
+        ])
+
+        const totalPages = Math.ceil(totalData / perPage);
         return apiResponse({
             res,
             status: 200,
-            message: 'List Prodi',
-            data: listProdi
+            message: "List prodi",
+            data: {
+                items: listProdi,
+                pagination: {
+                    totalData,
+                    totalPages,
+                    currentPage,
+                    perPage,
+                    hasNextPage: currentPage < totalPages,
+                    hasPrevPage: currentPage > 1,
+                }
 
+            }
         })
     }
     static async show(req, res) { }

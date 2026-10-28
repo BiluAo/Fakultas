@@ -4,12 +4,19 @@ import { apiResponse, apiResponseValidation } from "../utils/response.js"
 
 class FakultasController {
     static async index(req, res) {
-        const { search, sort, sortBy = "createdAt" } = req.query
+        const { search, sort, sortBy = "createdAt", page = 1, limit = 10 } = req.query
+
+        const currentPage = Math.max(1, parseInt(page, 10) || 1);
+        const perPage = Math.max(1, parseInt(limit, 10) || 10);
+        const skip = (currentPage - 1) * perPage;
+
+        const allowedSortFields = ["name", "createdAt", "updatedAt"];
+        const sortField = allowedSortFields.includes(sortBy) ? sortBy : "createdAt";
 
         const filter = {}
 
         const sortOption = {
-            [sortBy]: sort === "desc" ? -1 : 1,
+            [sortField]: sort === "desc" ? -1 : 1,
         };
 
         if (search) {
@@ -19,22 +26,36 @@ class FakultasController {
             };
         }
 
-        const listFakultas = await fakultasModel
-            .find(filter)
-            .select({
-                _id: 1,
-                name: 1,
-                createdAt: 1,
-                updatedAt: 1
-            })
-            .sort(sortOption);
+        const [listFakultas, totalData] = await Promise.all([
+            fakultasModel.find(filter)
+                .select({
+                    _id: 1,
+                    name: 1,
+                    createdAt: 1,
+                    updatedAt: 1,
+                })
+                .sort(sortOption)
+                .skip(skip)
+                .limit(perPage),
+            fakultasModel.countDocuments(filter),
+        ]);
+        const totalPages = Math.ceil(totalData / perPage)
 
         return apiResponse({
             res,
             status: 200,
-            message: "List Fakultas",
-            data: listFakultas,
-        })
+            data: {
+                items: listFakultas,
+                pagination: {
+                    totalData,
+                    totalPages,
+                    currentPage,
+                    perPage,
+                    hasNextPage: currentPage < totalPages,
+                    hasPrevPage: currentPage > 1,
+                },
+            },
+        });
     }
 
     static async show(req, res) {
