@@ -18,14 +18,9 @@
             "url": {
               "raw": "http://localhost:3000/api/fakultas",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "fakultas"
-              ]
+              "path": ["api", "fakultas"]
             }
           },
           "response": []
@@ -47,14 +42,9 @@
             "url": {
               "raw": "http://localhost:3000/api/fakultas",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "fakultas"
-              ]
+              "path": ["api", "fakultas"]
             }
           },
           "response": []
@@ -86,13 +76,8 @@
             },
             "url": {
               "raw": "{{BASE_URL}}/fakultas/6abd0809f4fdb039efb1fea5",
-              "host": [
-                "{{BASE_URL}}"
-              ],
-              "path": [
-                "fakultas",
-                "6abd0809f4fdb039efb1fea5"
-              ]
+              "host": ["{{BASE_URL}}"],
+              "path": ["fakultas", "6abd0809f4fdb039efb1fea5"]
             }
           },
           "response": []
@@ -113,9 +98,7 @@
             },
             "url": {
               "raw": "{{BASE_URL}}fakultas",
-              "host": [
-                "{{BASE_URL}}fakultas"
-              ]
+              "host": ["{{BASE_URL}}fakultas"]
             }
           },
           "response": []
@@ -141,12 +124,8 @@
             },
             "url": {
               "raw": "{{BASE_URL}}/prodi",
-              "host": [
-                "{{BASE_URL}}"
-              ],
-              "path": [
-                "prodi"
-              ]
+              "host": ["{{BASE_URL}}"],
+              "path": ["prodi"]
             }
           },
           "response": []
@@ -158,12 +137,8 @@
             "header": [],
             "url": {
               "raw": "{{BASE_URL}}/prodi",
-              "host": [
-                "{{BASE_URL}}"
-              ],
-              "path": [
-                "prodi"
-              ]
+              "host": ["{{BASE_URL}}"],
+              "path": ["prodi"]
             }
           },
           "response": []
@@ -175,13 +150,8 @@
             "header": [],
             "url": {
               "raw": "{{BASE_URL}}/prodi/xyxyxyx",
-              "host": [
-                "{{BASE_URL}}"
-              ],
-              "path": [
-                "prodi",
-                "xyxyxyx"
-              ]
+              "host": ["{{BASE_URL}}"],
+              "path": ["prodi", "xyxyxyx"]
             }
           },
           "response": []
@@ -193,13 +163,8 @@
             "header": [],
             "url": {
               "raw": "{{BASE_URL}}/prodi/6ac8cc741a52302a16e93108",
-              "host": [
-                "{{BASE_URL}}"
-              ],
-              "path": [
-                "prodi",
-                "6ac8cc741a52302a16e93108"
-              ]
+              "host": ["{{BASE_URL}}"],
+              "path": ["prodi", "6ac8cc741a52302a16e93108"]
             }
           },
           "response": []

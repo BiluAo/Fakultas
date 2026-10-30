@@ -1,6 +1,6 @@
 import app from './app.js'
-import { APP_PORT } from './config/env.js'
 import { connectDB } from './config/database.js'
+import { APP_PORT } from './config/env.js'
 
 await connectDB()
 

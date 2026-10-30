@@ -1,6 +1,6 @@
-const logMiddleware = (req,res,next) => {
-    console.log("Hallo Saya Middleware")
+const logMiddleware = (req, res, next) => {
+  console.log('Hallo Saya Middleware')
 
-    next()
+  next()
 }
 export default logMiddleware
